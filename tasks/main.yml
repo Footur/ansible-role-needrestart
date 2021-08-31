@@ -5,7 +5,7 @@
   apt:
     pkg: needrestart
     state: present
-    cache_valid_time: 600
+  become: yes
 
 - name: ensure needrestart config is latest
   template:
@@ -17,6 +17,7 @@
   with_items:
     - notify.conf
     - needrestart.conf
+  become: yes
 
 - name: ensure needrestart ignorelist config include is latest
   template:
@@ -25,6 +26,7 @@
     owner: root
     group: root
     mode: 0644
+  become: yes
   when: needrestart_ignorelist|d()
 
 - name: configure needrestart mail
@@ -34,4 +36,5 @@
     owner: root
     group: root
     mode: 0755
+  become: yes
 
