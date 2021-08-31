@@ -2,8 +2,8 @@
 # install needrestart
 
 - name: install needrestart
-  apt:
-    pkg: needrestart
+  ansible.builtin.package:
+    name: needrestart
     state: present
   become: yes
 
